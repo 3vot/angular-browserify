@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS demo with Browserify</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+</head>
+<body ng-app="3votApp">
+  <div class="container">
+    <div class="row">
+      <ul class="nav nav-pills nav-stacked col-md-2">
+        <li ng-class="{ active : currentRoute === 'main' }"><a href="#/main">Home</a></li>
+        <li ng-class="{ active : currentRoute === 'how' }"><a href="#/how">How i did it?</a></li>
+      </ul>
+      <div class="col-md-10 jumbotron" ng-view></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
