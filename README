@@ -1,3 +1,5 @@
 To build use
 
-browserify -t debowerify ./app/js/bootstrap.js > ./public/index.js
+grunt serv
+
+http://localhost:1717
