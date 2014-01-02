@@ -14,7 +14,13 @@ module.exports = function (grunt) {
     browserify: {
       app: {
         src  : 'app/js/bootstrap.js',
-        dest : '.tmp/js/app.js'
+        dest : '.tmp/js/app.js',
+        options: {
+          transform: [ "browserify-shim" ], 
+          shim: {
+            angular: {path: "./bower_components/angular/angular.js", exports: "angular" }
+          }
+        }
       }
     },
 

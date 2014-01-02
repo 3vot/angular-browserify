@@ -1,0 +1,20 @@
+{
+  "name": "angular-browserify",
+  "version": "0.0.0",
+  "homepage": "https://github.com/3vot/angular-browserify",
+  "authors": [
+    "Roberto Rodriguez <roberto@rodriguezartavia.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.6"
+  }
+}
