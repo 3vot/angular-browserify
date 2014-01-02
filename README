@@ -1,0 +1,3 @@
+To build use
+
+browserify -t debowerify ./app/js/bootstrap.js > ./public/index.js

@@ -14,7 +14,10 @@ module.exports = function (grunt) {
     browserify: {
       app: {
         src  : 'app/js/bootstrap.js',
-        dest : '.tmp/js/app.js'
+        dest : '.tmp/js/app.js',
+        options: {
+          transform: ['debowerify']
+        }
       }
     },
 
@@ -28,7 +31,10 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           open : true,
-          base : [ '.tmp', 'app' ]
+          base : [ '.tmp', 'app' ],
+          options: {
+            transform: ['debowerify']
+          }
         }
       }
     },
