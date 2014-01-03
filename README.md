@@ -1,0 +1,2 @@
+- Run `grunt serve` to start development environment, once your application is ready, run `grunt build` to package it.
+- Run `grunt serve:build` if you want to preview your built app.

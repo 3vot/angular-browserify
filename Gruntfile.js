@@ -12,12 +12,25 @@ module.exports = function (grunt) {
 
     // Browseriy app code.
     browserify: {
-      options: {
-        transform: [ 'brfs' ]
-      },
       app: {
         src  : 'app/js/bootstrap.js',
         dest : '.tmp/js/app.js'
+      }
+    },
+
+    // Copy files to build.
+    copy: {
+      index: {
+        src  : 'app/index.html',
+        dest : 'dist/index.html'
+      }
+    },
+
+    // Concatenate inlined templates with app code.
+    concat: {
+      app: {
+        src  : [ '.tmp/js/app.js', '.tmp/js/templates.js' ],
+        dest : 'dist/js/app.js'
       }
     },
 
@@ -28,11 +41,29 @@ module.exports = function (grunt) {
         hostname   : 'localhost',
         livereload : 35729
       },
+      build: {
+        options: {
+          open : true,
+          base : 'dist'
+        }
+      },
       livereload: {
         options: {
           open : true,
           base : [ '.tmp', 'app' ]
         }
+      }
+    },
+
+    // Concatenate angular templates.
+    ngtemplates: {
+      app: {
+        options: {
+          module : '3votApp',
+        },
+        cwd  : 'app',
+        src  : 'templates/**/*.html',
+        dest : '.tmp/js/templates.js'
       }
     },
 
@@ -55,9 +86,23 @@ module.exports = function (grunt) {
   });
 
   // Start development server.
-  grunt.registerTask('serve', [
+  grunt.registerTask('serve', function (target) {
+
+    if (target === 'build') {
+      return grunt.task.run([ 'build', 'connect:build:keepalive' ]);
+    }
+
+    grunt.task.run([
+      'browserify',
+      'connect:livereload',
+      'watch'
+    ]);
+  });
+
+  // Build application.
+  grunt.registerTask('build', [
     'browserify',
-    'connect:livereload',
-    'watch'
+    'ngtemplates',
+    'concat',
   ]);
 };

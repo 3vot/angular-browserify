@@ -5,13 +5,13 @@ angular.module('3votApp', [ 'ngRoute' ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/main', {
-        name       : 'main',
-        controller : 'MainCtrl',
-        template   : fs.readFileSync(__dirname + '/../templates/main.html')
+        name        : 'main',
+        controller  : 'MainCtrl',
+        templateUrl : 'templates/main.html'
       })
       .when('/how', {
-        name     : 'how',
-        template : fs.readFileSync(__dirname + '/../templates/how.html')
+        name        : 'how',
+        templateUrl : 'templates/how.html'
       })
       .otherwise({
         redirectTo : '/main'

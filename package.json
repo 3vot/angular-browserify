@@ -14,13 +14,14 @@
     "grunt-contrib-watch": "~0.5.3",
     "napa": "~0.2.0",
     "time-grunt": "~0.2.6",
-    "load-grunt-tasks": "~0.2.1"
+    "load-grunt-tasks": "~0.2.1",
+    "grunt-angular-templates": "~0.5.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-ngmin": "0.0.3"
   },
   "napa": {
     "angular": "angular/bower-angular",
     "angular-route": "angular/bower-angular-route"
-  },
-  "dependencies": {
-    "brfs": "0.0.8"
   }
 }
