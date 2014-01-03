@@ -19,5 +19,8 @@
   "napa": {
     "angular": "angular/bower-angular",
     "angular-route": "angular/bower-angular-route"
+  },
+  "dependencies": {
+    "brfs": "0.0.8"
   }
 }

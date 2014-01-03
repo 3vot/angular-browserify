@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 // Third party libraries/frameworks.
 require('angular/angular');
 require('angular-route/angular-route');

@@ -12,6 +12,9 @@ module.exports = function (grunt) {
 
     // Browseriy app code.
     browserify: {
+      options: {
+        transform: [ 'brfs' ]
+      },
       app: {
         src  : 'app/js/bootstrap.js',
         dest : '.tmp/js/app.js'
