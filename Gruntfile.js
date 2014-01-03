@@ -23,6 +23,10 @@ module.exports = function (grunt) {
       index: {
         src  : 'app/index.html',
         dest : 'dist/index.html'
+      },
+      app: {
+        src  : '.tmp/js/app.js',
+        dest : 'dist/js/app.js'
       }
     },
 
@@ -30,7 +34,7 @@ module.exports = function (grunt) {
     concat: {
       app: {
         src  : [ '.tmp/js/app.js', '.tmp/js/templates.js' ],
-        dest : 'dist/js/app.js'
+        dest : '.tmp/js/app.js'
       }
     },
 
@@ -73,6 +77,10 @@ module.exports = function (grunt) {
         files : [ 'app/js/**/*.js' ],
         tasks : [ 'browserify' ]
       },
+      ngtemplates: {
+        files : [ 'app/<%= ngtemplates.app.src %>' ],
+        tasks : [ 'browserify', 'templates' ]
+      },
       livereload: {
         options: {
           livereload : '<%= connect.options.livereload %>'
@@ -85,6 +93,12 @@ module.exports = function (grunt) {
     }
   });
 
+  // Minify templates.
+  grunt.registerTask('templates', [
+    'ngtemplates',
+    'concat'
+  ]);
+
   // Start development server.
   grunt.registerTask('serve', function (target) {
 
@@ -94,6 +108,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'browserify',
+      'templates',
       'connect:livereload',
       'watch'
     ]);
@@ -102,7 +117,6 @@ module.exports = function (grunt) {
   // Build application.
   grunt.registerTask('build', [
     'browserify',
-    'ngtemplates',
-    'concat',
+    'templates',
   ]);
 };
